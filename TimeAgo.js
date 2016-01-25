@@ -4,6 +4,7 @@ var {
   Text
 } = React;
 var moment = require('moment');
+var moment_duration = require('moment-duration-format');
 var TimerMixin = require('react-timer-mixin');
 
 var TimeAgo = React.createClass({
@@ -40,11 +41,10 @@ var TimeAgo = React.createClass({
     nowMoment = moment();
     agoMoment = moment(this.props.time);
     durationMicroseconds = nowMoment.diff(agoMoment);
-
-    console.log(durationMicroseconds + ' seconds ago');
+    timeAgo = moment.duration(durationMicroseconds, "minutes").format("h [hrs], m [min]");
 
     return (
-      <Text {...this.props}>{moment(this.props.time).fromNow(this.props.hideAgo)}</Text>
+      <Text {...this.props}>{timeAgo}</Text>
     );
   }
 });
