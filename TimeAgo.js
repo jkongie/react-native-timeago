@@ -38,11 +38,21 @@ var TimeAgo = React.createClass({
   },
 
   render() {
-    nowMoment = moment();
-    agoMoment = moment(this.props.time);
-    durationMicroseconds = nowMoment.diff(agoMoment);
-    timeAgo = moment.duration(durationMicroseconds, "milliseconds").format("h [hrs], m [min]");
+    var nowMoment = moment();
+    var agoMoment = moment(this.props.time);
+    var durationMilliseconds = nowMoment.diff(agoMoment);
 
+    if (durationMilliseconds < 60000) {
+      var timeAgo = moment.duration(durationMilliseconds, "milliseconds").format("s[s]");
+    } else if (durationMilliseconds >= 60000 & durationMilliseconds < 3600000) {
+      var timeAgo = moment.duration(durationMilliseconds, "milliseconds").format("m[m]");
+    } else if (durationMilliseconds > 3600000 & durationMilliseconds < 86400000) {
+      var timeAgo = moment.duration(durationMilliseconds, "milliseconds").format("h:mm[h]");
+    } else if (durationMilliseconds >= 86400000 & durationMilliseconds < 604800000) {
+      var timeAgo = moment.duration(durationMilliseconds, "milliseconds").format("d[d]");
+    } else {
+      var timeAgo = agoMoment.format('MM/DD/YY');;
+    }
     return (
       <Text {...this.props}>{timeAgo}</Text>
     );
