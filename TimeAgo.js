@@ -41,7 +41,7 @@ var TimeAgo = React.createClass({
     nowMoment = moment();
     agoMoment = moment(this.props.time);
     durationMicroseconds = nowMoment.diff(agoMoment);
-    timeAgo = moment.duration(durationMicroseconds, "minutes").format("h [hrs], m [min]");
+    timeAgo = moment.duration(durationMicroseconds, "milliseconds").format("h [hrs], m [min]");
 
     return (
       <Text {...this.props}>{timeAgo}</Text>
