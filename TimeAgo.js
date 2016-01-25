@@ -37,6 +37,12 @@ var TimeAgo = React.createClass({
   },
 
   render() {
+    nowMoment = moment();
+    agoMoment = moment(this.props.time);
+    durationMicroseconds = nowMoment.diff(agoMoment);
+
+    console.log(durationMicroseconds + ' seconds ago');
+
     return (
       <Text {...this.props}>{moment(this.props.time).fromNow(this.props.hideAgo)}</Text>
     );
