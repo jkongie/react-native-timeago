@@ -47,7 +47,7 @@ var TimeAgo = React.createClass({
     } else if (durationMilliseconds >= 60000 & durationMilliseconds < 3600000) {
       var timeAgo = moment.duration(durationMilliseconds, "milliseconds").format("m[m]");
     } else if (durationMilliseconds > 3600000 & durationMilliseconds < 86400000) {
-      var timeAgo = moment.duration(durationMilliseconds, "milliseconds").format("h:mm[h]");
+      var timeAgo = moment.duration(durationMilliseconds, "milliseconds").format("h[h] m[m]");
     } else if (durationMilliseconds >= 86400000 & durationMilliseconds < 604800000) {
       var timeAgo = moment.duration(durationMilliseconds, "milliseconds").format("d[d]");
     } else {
