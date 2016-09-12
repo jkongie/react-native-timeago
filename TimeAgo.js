@@ -56,7 +56,7 @@ var TimeAgo = React.createClass({
     } else if (durationMilliseconds >= 86400000 & durationMilliseconds < 604800000) {
       var timeAgo = moment.duration(durationMilliseconds, "milliseconds").format("d[d]");
     } else {
-      var timeAgo = agoMoment.format('MM/DD/YY');;
+      var timeAgo = agoMoment.format('D MMM');
     }
     return (
       <Text {...this.props}>{timeAgo}</Text>
